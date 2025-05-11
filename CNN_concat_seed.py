@@ -74,7 +74,7 @@ def run_cnn_with_results_for_target_column(index_col, train_images,
     
     criterion = torch.nn.MSELoss()
     optimizer = torch.optim.Adam(net.parameters(), lr=learning_rate)
-    scheduler = torch.optim.lr_scheduler.StepLR(optimizer, step_size=10, gamma=0.95, verbose = False)
+    scheduler = torch.optim.lr_scheduler.StepLR(optimizer, step_size=10, gamma=0.95)
 
     dataset_val = CustomImageDataset(raster_images=val_images, extra_predictors = val_extra_predictors, targets=val_targets[:,index_col])
     dataloader_val = torch.utils.data.DataLoader(dataset_val, batch_size=32)
