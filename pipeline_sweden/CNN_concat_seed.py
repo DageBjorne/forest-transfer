@@ -94,7 +94,7 @@ def run_cnn_with_results_for_target_column(index_col, train_images,
     dataset_test4 = CustomImageDataset(raster_images=test_images4, extra_predictors = test_extra_predictors4, targets=test_targets4[:,index_col])
     dataloader_test4 = torch.utils.data.DataLoader(dataset_test4, batch_size=32)
     
-    maximum_val_loss = 10000
+    maximum_val_loss = 1000000
     es_count = 0
     train_loss = []
     val_loss = []

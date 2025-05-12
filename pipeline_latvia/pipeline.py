@@ -21,7 +21,7 @@ new_cv_row = pd.DataFrame(columns = ['seed',
                                     'xgboost', 'cnn'])
 
 nfi_data = read_nfi_data(nfi_data_path)
-seed_list = [1,2,3,4,5,6,7,8,9,10]
+seed_list = [3,4,5]
 for seed in seed_list:
     new_cv_row.at[0, 'seed'] = seed
     results = run_xg_boost_with_results_for_all_target_columns(seed, nfi_data)

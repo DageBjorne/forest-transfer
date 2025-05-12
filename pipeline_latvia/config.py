@@ -20,9 +20,9 @@ val_size = 0.15
 
 #cnn settings
 BATCH_SIZE = 64
-EPOCHS = 500
+EPOCHS = 50
 learning_rate = 5e-05
-patience = 10
+patience = 5
 
 #augmentation settings
 include_swapping = False

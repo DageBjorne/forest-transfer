@@ -20,6 +20,8 @@ from sklearn.impute import KNNImputer
 
 import torch.nn.functional as F
 
+import matplotlib.pyplot as plt
+
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 class CustomImageDataset(torch.utils.data.Dataset):
@@ -79,7 +81,7 @@ def run_cnn_with_results_for_target_column(index_col, train_images,
     dataset_test = CustomImageDataset(raster_images=test_images, extra_predictors = test_extra_predictors, targets=test_targets[:,index_col])
     dataloader_test = torch.utils.data.DataLoader(dataset_test, batch_size=32)
     
-    maximum_val_loss = 10000
+    maximum_val_loss = 1000000
     es_count = 0
     train_loss = []
     val_loss = []
@@ -164,6 +166,14 @@ def run_cnn_with_results_for_target_column(index_col, train_images,
 
         if es_count == patience:
             break
+
+    #plot train and val losses
+    x = np.linspace(1, len(train_loss), len(train_loss))
+    plt.plot(x, train_loss)
+    plt.plot(x, val_loss)
+    plt.legend(['train_loss', 'val_loss'])
+    plt.savefig(f'../res/cnn_{index_col}.jpg')
+    plt.close('all')
         
     #obtain test rmse  
     #load best model

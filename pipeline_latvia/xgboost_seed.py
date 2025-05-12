@@ -1,6 +1,7 @@
 from sklearn.datasets import make_regression
 from sklearn.ensemble import GradientBoostingRegressor
 from sklearn.model_selection import train_test_split
+import matplotlib.pyplot as plt
 
 import xgboost as xgb
 
@@ -19,11 +20,23 @@ def train_xgboost(data_train, data_val, predictor_columns, target_column):
 
     dtrain = xgb.DMatrix(predictors_train, label=np.array(data_train[target_column]))
     dval = xgb.DMatrix(predictors_val, label=np.array(data_val[target_column]))
-
-    # Train with evaluation set and early stopping
     evallist = [(dtrain, 'train'), (dval, 'eval')]
+    evals_result = {}
 
-    bst = xgb.train(params, dtrain, num_boost_round=1000, evals=evallist, early_stopping_rounds=10, verbose_eval = False)
+    bst = xgb.train(params, dtrain, num_boost_round=1000, evals=evallist,
+                    early_stopping_rounds=10, evals_result=evals_result,
+                    verbose_eval=False)
+
+    # Plot the loss curves
+    for metric in evals_result['train']:
+        plt.figure(figsize=(8, 5))
+        plt.plot(evals_result['train'][metric])
+        plt.plot(evals_result['eval'][metric])
+        plt.legend(['train', 'val'])
+        
+        plt.savefig(f'../res/xgboost_{target_column}.jpg')
+        plt.close('all')
+
 
     return bst
 
