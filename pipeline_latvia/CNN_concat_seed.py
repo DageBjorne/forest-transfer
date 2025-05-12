@@ -62,7 +62,7 @@ def run_cnn_with_results_for_target_column(index_col, train_images,
     
     #instantiation
     if crop_nr_border == 0:
-        net = Net(extra_predictors_dim=63)
+        net = Net(extra_predictors_dim=60)
     elif crop_nr_border == 2:
         net = Net_5x5(extra_predictors_dim=63)
     elif crop_nr_border == 3:
@@ -203,7 +203,7 @@ def run_cnn_with_results_for_target_column(index_col, train_images,
 
 def run_cnn_with_results(data, seed):
     data_train, data_val, data_test = create_train_val_test_split(data, seed, test_size)
-    train_images, train_extra_predictors, train_targets, val_images, val_extra_predictors, val_targets, test_images, test_extra_predictors, test_targets, test_images1, test_extra_predictors1, test_targets1, test_images2, test_extra_predictors2, test_targets2, test_images3, test_extra_predictors3, test_targets3, test_images4, test_extra_predictors4, test_targets4 = prepare_datasets_for_cnn(data_train, data_val, data_test)
+    train_images, train_extra_predictors, train_targets, val_images, val_extra_predictors, val_targets, test_images, test_extra_predictors, test_targets = prepare_datasets_for_cnn(data_train, data_val, data_test)
     image_scaler, image_imputer, extra_predictor_scaler, extra_predictor_imputer = fit_imputer_and_scaler(train_images, train_extra_predictors)
     train_images, train_extra_predictors = transform_data(train_images, train_extra_predictors, image_scaler, image_imputer, extra_predictor_scaler, extra_predictor_imputer)
     val_images, val_extra_predictors = transform_data(val_images, val_extra_predictors, image_scaler, image_imputer, extra_predictor_scaler, extra_predictor_imputer)

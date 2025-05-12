@@ -42,5 +42,5 @@ include_swapping = False
 swapping_range = [0,15]
 rotation_prob = 0.25
 fliplr_prob = 0.5
-crop_raster_image = True
-crop_nr_border = 2 #1 for removing one border, 2for etc...
+crop_raster_image = False
+crop_nr_border = 0 #1 for removing one border, 2for etc...

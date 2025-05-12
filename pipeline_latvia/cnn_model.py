@@ -1,7 +1,7 @@
 import torch
 import torch.nn.functional as F
 class Net(torch.nn.Module):
-    def __init__(self, extra_predictors_dim=63):  # datum_diff_dim is now 128
+    def __init__(self, extra_predictors_dim=60):  # datum_diff_dim is now 128
         super(Net, self).__init__()
         self.conv1 = torch.nn.Conv2d(in_channels=60, out_channels=64, kernel_size=3, stride=1, padding=1)
         self.conv2 = torch.nn.Conv2d(in_channels=64, out_channels=32, kernel_size=3, stride=1, padding=1)
