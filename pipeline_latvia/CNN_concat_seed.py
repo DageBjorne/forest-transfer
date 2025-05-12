@@ -224,7 +224,8 @@ def run_cnn_with_results(data, seed):
     result = run_cnn_with_results_for_target_column(2, train_images, 
                                            train_extra_predictors, train_targets, 
                                            val_images, val_extra_predictors, 
-                                           val_targets, test_images, test_extra_predictors)
+                                           val_targets, test_images, test_extra_predictors,
+                                           test_targets)
  
     results.append(result)
     return results
