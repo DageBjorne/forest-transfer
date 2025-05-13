@@ -6,9 +6,9 @@ from dataloading import *
 from utils import *
 import pandas as pd
 
-nfi_data_path = r'../Image_data/merged_data_cleaned.csv'
-raster_data_path = r'../Image_data/tif_surrounding_processed'
-saving_path = '../res/results.csv'
+nfi_data_path = r'./Image_data/merged_data_cleaned.csv'
+raster_data_path = r'./Image_data/tif_surrounding_processed'
+saving_path = './res/results.csv'
 if os.path.exists(saving_path) == False:
     cv_data = pd.DataFrame(columns = ['seed', 
                                      'regression', 'xgboost', 'cnn'])
