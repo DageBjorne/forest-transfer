@@ -1,4 +1,5 @@
-target_columns = ['H_AVERAGE', 'D_AVERAGE', 'VOLUME']
+target_columns = ['Hgv', 'Dgv', 'Volume']
+target_columns_target = ['H_AVERAGE', 'D_AVERAGE', 'VOLUME']
 
 predictor_columns_regression = ['zq30', 'zq80','zq90', 'zq95', 
                                 'pzabovezmean', 'zsd', 'n', 'p1th', 
